@@ -29,9 +29,9 @@ After installing poetry, navigate to root foler backend-pat/ and run command `po
 ### 3. Ask for `.env` files from one of the team member, because docker will throw error when building the container
 
 ### 4. Commands to run the FastAPI app with it's MySQL database
-First build the container: `docker-compose build`
-Run container with applications: `docker-compose up`
-To stop the container: `docker-compose down`
+First build the container: `docker-compose build` <br>
+Run container with applications: `docker-compose up`<br>
+To stop the container: `docker-compose down`<br>
 
 
 
