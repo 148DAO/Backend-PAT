@@ -4,11 +4,13 @@ services:
   db:
     image: mysql:8
     container_name: mysql_db
+    env_file:
+      - .env
     environment:
-      MYSQL_ROOT_PASSWORD: root_password
-      MYSQL_DATABASE: pat-db
-      MYSQL_USER: user
-      MYSQL_PASSWORD: pat-password
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - mysql_data:/var/lib/mysql
     ports:
@@ -17,9 +19,11 @@ services:
   web:
     build: .
     container_name: fastapi_web
+    env_file:
+      - .env
     environment:
-      - DATABASE_URL=mysql+mysqlconnector://user:pat-password@db/pat-db
-      - OTHER_ENV_VARIABLES=values
+      DATABASE_URL: ${DATABASE_URL}
+      OTHER_ENV_VARIABLES: ${OTHER_ENV_VARIABLES}
     ports:
       - "8000:8000"
     depends_on:
