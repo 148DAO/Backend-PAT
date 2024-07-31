@@ -26,6 +26,8 @@ services:
       OTHER_ENV_VARIABLES: ${OTHER_ENV_VARIABLES}
     ports:
       - "8000:8000"
+    volumes:
+      - .:/app
     depends_on:
       - db
 
