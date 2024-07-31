@@ -22,5 +22,8 @@ class Settings:
     MYSQL_DATABASE: str = get_required_env("MYSQL_DATABASE")
     MYSQL_ROOT_PASSWORD: str = get_required_env("MYSQL_ROOT_PASSWORD")
     
+<<<<<<< HEAD
     
 settings = Settings()
+=======
+>>>>>>> refs/remotes/origin/main
