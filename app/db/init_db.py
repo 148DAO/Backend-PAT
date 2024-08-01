@@ -18,16 +18,16 @@ def init_db() -> None:
 
     Base.metadata.create_all(bind=engine)
 
-# def check_tables_exist():
-#     inspector = inspect(engine)
-#     tables = inspector.get_table_names()
-#     return len(tables) > 0
+def check_tables_exist():
+    inspector = inspect(engine)
+    tables = inspector.get_table_names()
+    return len(tables) > 0
 
 
-# def create_database_tables():
-#     if not check_tables_exist():
-#         init_db() 
-#     else:
-#         # don't create database, it already exists
-#         pass
+def create_database_tables():
+    if not check_tables_exist():
+        init_db() 
+    else:
+        # don't create database, it already exists
+        pass
 

@@ -1,11 +1,11 @@
 from fastapi import FastAPI
 from app.api.v1.endpoints import user as user_router
-from app.db.init_db import init_db
+from app.db.init_db import create_database_tables
 
 
 app = FastAPI()
 
-init_db()
+create_database_tables()
 
 app.include_router(prefix="/api/v1", router=user_router.router, tags=["Users"])
 
