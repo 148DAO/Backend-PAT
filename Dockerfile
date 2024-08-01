@@ -28,6 +28,7 @@ COPY ./app /app/app
 # Copy the .env file
 COPY .env /app/
 
+
 # Expose port 8000 for the FastAPI app
 EXPOSE 8000
 
