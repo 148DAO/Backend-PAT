@@ -22,5 +22,9 @@ class Settings:
     MYSQL_DATABASE: str = get_required_env("MYSQL_DATABASE")
     MYSQL_ROOT_PASSWORD: str = get_required_env("MYSQL_ROOT_PASSWORD")
     
+    @property
+    def database_url(self) -> str:
+        return f"mysql+pymysql://{self.MYSQL_USER}:{self.MYSQL_PASSWORD}@{self.MYSQL_PORT}/{self.MYSQL_DATABASE}"
+
 
 settings = Settings()
