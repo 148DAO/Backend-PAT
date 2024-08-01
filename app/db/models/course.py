@@ -18,7 +18,7 @@ class Subject(Base):
     __tablename__ = "subject"
     
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
-    course_id: Mapped[int] = mapped_column(ForeignKey("course.id"), index=True)
+    course_id: Mapped[int] = mapped_column(ForeignKey(Course.id), index=True)
     name: Mapped[str]
     
     course: Mapped[Course] = relationship(back_populates="subjects")
@@ -29,7 +29,7 @@ class Lesson(Base):
     __tablename__ = "lesson"
     
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
-    subject_id: Mapped[int] = mapped_column(ForeignKey("subject.id"), index=True)
+    subject_id: Mapped[int] = mapped_column(ForeignKey(Subject.id), index=True)
     title: Mapped[str]
     content: Mapped[str]
     duration_in_minutes: Mapped[int]
