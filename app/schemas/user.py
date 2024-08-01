@@ -7,3 +7,13 @@ class UserCreate(BaseModel):
 
     class Config:
         orm_mode = True
+
+class UserRead(BaseModel):
+    id: str
+    username: str
+    email: EmailStr
+    hashed_password: str
+
+    class Config:
+        orm_mode = True
+
