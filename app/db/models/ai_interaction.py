@@ -1,6 +1,6 @@
 from datetime import date
 
-from sqlalchemy import ForeignKey
+from sqlalchemy import ForeignKey, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .base import Base
@@ -12,7 +12,7 @@ class Query(Base):
     
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     user_id: Mapped[int] = mapped_column(ForeignKey(User.id))
-    text: Mapped[str]
+    text: Mapped[str] = mapped_column(Text())
     date: Mapped[date]
     
     user: Mapped[User] = relationship()
@@ -23,7 +23,7 @@ class Response(Base):
     
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     query_id: Mapped[int] = mapped_column(ForeignKey(Query.id))
-    text: Mapped[str]
+    text: Mapped[str] = mapped_column(Text())
     
     query: Mapped[Query] = relationship()
 

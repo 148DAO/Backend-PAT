@@ -1,6 +1,6 @@
 from datetime import date
 
-from sqlalchemy import ForeignKey
+from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .base import Base
@@ -12,7 +12,7 @@ class Notification(Base):
     
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     user_id: Mapped[int] = mapped_column(ForeignKey(User.id))
-    message: Mapped[str]
+    message: Mapped[str] = mapped_column(String(255))
     date: Mapped[date]
     status: Mapped[int]
     
@@ -24,7 +24,7 @@ class Reminder(Base):
     
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     user_id: Mapped[int] = mapped_column(ForeignKey(User.id))
-    text: Mapped[str]
+    text: Mapped[str] = mapped_column(String(255))
     date: Mapped[date]
     status: Mapped[int]
     

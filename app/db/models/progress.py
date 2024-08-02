@@ -1,6 +1,6 @@
 from datetime import date
 
-from sqlalchemy import ForeignKey
+from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .base import Base
@@ -32,8 +32,8 @@ class Performance(Base):
     course_id: Mapped[int] = mapped_column(ForeignKey(Course.id), index=True)
     lesson_id: Mapped[int] = mapped_column(ForeignKey(Lesson.id), index=True)
     score: Mapped[int]
-    feedback: Mapped[str | None]
+    feedback: Mapped[str | None] = mapped_column(String(1023))
     
     user: Mapped[User] = relationship(back_populates="performances")
-    course: Mapped[Course] = relationship(Course)
-    lesson: Mapped[Lesson] = relationship(Lesson)
+    course: Mapped[Course] = relationship()
+    lesson: Mapped[Lesson] = relationship()
