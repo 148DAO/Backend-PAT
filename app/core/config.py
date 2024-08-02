@@ -21,6 +21,7 @@ class Settings:
     MYSQL_PORT: int = int(os.getenv("MYSQL_PORT", 3306))
     MYSQL_DATABASE: str = get_required_env("MYSQL_DATABASE")
     MYSQL_ROOT_PASSWORD: str = get_required_env("MYSQL_ROOT_PASSWORD")
+    DATABASE_URL: str = get_required_env("DATABASE_URL")
     
 
 settings = Settings()
