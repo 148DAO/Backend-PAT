@@ -1,3 +1,4 @@
+from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from sqlalchemy import Date
@@ -21,6 +22,6 @@ class User(Base):
     birth_date: Mapped[Date]
     profile_picture: Mapped[str | None]  # Profile picture path 
     
-    progresses: Mapped[list["Progress"]] = relationship(back_populates="user")
-    performances: Mapped[list["Performance"]] = relationship(back_populates="user")
+    progresses: Mapped[list[Progress]] = relationship(back_populates="user")
+    performances: Mapped[list[Performance]] = relationship(back_populates="user")
     

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -11,7 +13,7 @@ class Course(Base):
     name: Mapped[str]
     description: Mapped[str]
     
-    subjects: Mapped[list["Subject"]] = relationship(back_populates="course")
+    subjects: Mapped[list[Subject]] = relationship(back_populates="course")
     
     
 class Subject(Base):
@@ -22,7 +24,7 @@ class Subject(Base):
     name: Mapped[str]
     
     course: Mapped[Course] = relationship(back_populates="subjects")
-    lessons: Mapped[list["Lesson"]] = relationship(back_populates="subject")
+    lessons: Mapped[list[Lesson]] = relationship(back_populates="subject")
     
     
 class Lesson(Base):
