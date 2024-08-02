@@ -1,4 +1,6 @@
-from sqlalchemy import ForeignKey, Date
+from datetime import date
+
+from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .base import Base
@@ -14,8 +16,8 @@ class Progress(Base):
     course_id: Mapped[int] = mapped_column(ForeignKey(Course.id), index=True)
     lesson_id: Mapped[int] = mapped_column(ForeignKey(Lesson.id), index=True)
     completition_status: Mapped[int]
-    start_date: Mapped[Date]
-    completition_date: Mapped[Date | None]
+    start_date: Mapped[date]
+    completition_date: Mapped[date | None]
 
     user: Mapped[User] = relationship(back_populates="progresses")
     course: Mapped[Course] = relationship(Course)

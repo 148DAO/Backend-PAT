@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING
+from datetime import date
 
-from sqlalchemy import Date
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .base import Base
@@ -19,7 +19,7 @@ class User(Base):
     hashed_password: Mapped[str]
     email: Mapped[str] = mapped_column(index=True)
     bio: Mapped[str | None]
-    birth_date: Mapped[Date]
+    birth_date: Mapped[date]
     profile_picture: Mapped[str | None]  # Profile picture path 
     
     progresses: Mapped[list[Progress]] = relationship(back_populates="user")

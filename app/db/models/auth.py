@@ -1,4 +1,6 @@
-from sqlalchemy import ForeignKey, Date
+from datetime import date
+
+from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .base import Base
@@ -11,6 +13,6 @@ class AuthToken(Base):
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     user_id: Mapped[int] = mapped_column(ForeignKey(User.id))
     token: Mapped[str] = mapped_column(index=True)
-    expiry_date: Mapped[Date]
+    expiry_date: Mapped[date]
 
     user: Mapped[User] = relationship()
