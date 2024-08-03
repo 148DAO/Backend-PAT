@@ -9,7 +9,7 @@ class UserCreate(BaseModel):
         orm_mode = True
 
 class UserRead(BaseModel):
-    id: str
+    id: int
     username: str
     email: EmailStr
     hashed_password: str
