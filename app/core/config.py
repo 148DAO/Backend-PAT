@@ -31,8 +31,12 @@ class Settings:
         core_directory = os.path.dirname(config_file_path)
         app_directory = os.path.dirname(core_directory)
         return app_directory
-    
-    
+   
+    @property
+    def database_url(self) -> str:
+        return f"mysql+pymysql://{self.MYSQL_USER}:{self.MYSQL_PASSWORD}@{self.MYSQL_PORT}/{self.MYSQL_DATABASE}"
+
+
 settings = Settings()
 
 # Add app directory in sys.path if not present
