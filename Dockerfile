@@ -12,7 +12,7 @@ WORKDIR /app
 RUN pip install poetry
 
 # Copy the pyproject.toml and poetry.lock files to the container
-COPY pyproject.toml poetry.lock* /app/
+COPY pyproject.toml poetry.lock /app/
 
 # Install dependencies using Poetry
 RUN poetry install --no-dev --no-root
@@ -22,14 +22,16 @@ RUN poetry install --no-dev --no-root
 COPY ./app /app/app
 
 # Copy the Alembic configurations
-# COPY alembic.ini /app/
-# COPY alembic /app/alembic
+COPY ./alembic.ini /app/
+COPY ./alembic /app/alembic
 
 # Copy the .env file
 COPY .env /app/
 
+
 # Expose port 8000 for the FastAPI app
 EXPOSE 8000
+
 
 # Command to run the FastAPI app using uvicorn
 CMD ["poetry", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
