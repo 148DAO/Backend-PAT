@@ -1,9 +1,10 @@
 from fastapi import FastAPI
-from app.db.init_db import init_database
+
+from app.db.init_db import run_migrations
 
 
-def main():
-    init_database()
+def main() -> FastAPI:
+    run_migrations()
 
     app = FastAPI()
 

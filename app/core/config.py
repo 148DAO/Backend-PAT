@@ -31,6 +31,11 @@ class Settings:
         core_directory = os.path.dirname(config_file_path)
         app_directory = os.path.dirname(core_directory)
         return app_directory
+    
+    @property
+    def ROOT_DIRECTORY(self) -> str:
+        root_directory = os.path.dirname(self.APP_DIRECTORY)
+        return root_directory
    
     @property
     def database_url(self) -> str:
