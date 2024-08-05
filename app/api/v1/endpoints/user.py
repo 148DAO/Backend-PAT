@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 from app.api import deps
-from app.crud.user import create_new_user, get_users
+from app.crud.user import create_new_user, get_all_users
 from app.schemas.user import UserCreate, UserRead
 from typing import List
 
@@ -24,7 +24,7 @@ def create_user(user: UserCreate, db: Session = Depends(deps.get_db)):
 @router.get('/users/', response_model=List[UserRead], status_code=status.HTTP_200_OK)
 def get_users(skip: int = 0, limit: int = 100, db: Session = Depends(deps.get_db)):
     try:
-        users = get_users(db=db, skip=skip, limit=limit)
+        users = get_all_users(db=db, skip=skip, limit=limit)
         if not users:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No users found")
         return users
