@@ -34,4 +34,11 @@ Run container with applications: `docker-compose up`<br>
 To stop the container: `docker-compose down`<br>
 
 
+#### COMMON PROBLEMS SOLVING: FOR LINUX
+
+1.  listen tcp4 0.0.0.0:3306: bind: address already in use
+    - `sudo systemctl stop mysql` => when it's specifically wanting to kill mysql port 
+    - For any port try this: `sudo fuser -k <port>/tcp`
+
+
 
