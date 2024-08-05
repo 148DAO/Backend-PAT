@@ -1,8 +1,3 @@
-# # Import all models
-# from .models.base import Base
-# from .models import user, auth, course, learning_resources, notifications, progress
-
-
 from app.core.config import settings
 from sqlalchemy.orm import sessionmaker, declarative_base
 from typing import Generator
