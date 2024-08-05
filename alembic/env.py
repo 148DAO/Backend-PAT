@@ -6,7 +6,8 @@ from app.db.base import Base
 
 
 # import all models
-from app.db.models import *
+from app.db.models.user import User
+from app.db.models.auth import AuthToken
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
