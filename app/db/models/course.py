@@ -3,7 +3,7 @@ from __future__ import annotations
 from sqlalchemy import ForeignKey, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from .base import Base
+from ..base import Base
 
 
 class Course(Base):

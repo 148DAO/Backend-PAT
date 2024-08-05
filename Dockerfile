@@ -35,3 +35,7 @@ EXPOSE 8000
 
 # Command to run the FastAPI app using uvicorn
 CMD ["poetry", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+
+# Command to run Alembic migrations and then start the FastAPI app using uvicorn
+# CMD ["sh", "-c", "poetry run alembic upgrade head && poetry run uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"]
+
