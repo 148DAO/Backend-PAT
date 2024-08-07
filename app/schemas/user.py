@@ -4,8 +4,7 @@ from typing import TYPE_CHECKING
 
 from pydantic import BaseModel, EmailStr
 
-if TYPE_CHECKING:
-    from app.schemas.progress import ProgressRead, PerformanceRead
+from app.schemas.progress import ProgressRead, PerformanceRead
 
 
 class BaseUser(BaseModel):
