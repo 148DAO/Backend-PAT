@@ -33,6 +33,10 @@ First build the container: `docker-compose build` <br>
 Run container with applications: `docker-compose up`<br>
 To stop the container: `docker-compose down`<br>
 
+#### VSCode Tips
+1. To remove delete branches on VSCode: `git fetch --prune && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs -r git branch -d
+`
+
 
 #### COMMON PROBLEMS SOLVING: FOR LINUX
 
