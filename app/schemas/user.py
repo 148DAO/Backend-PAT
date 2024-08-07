@@ -1,29 +1,31 @@
-from pydantic import BaseModel, EmailStr
-from typing import Optional, List
+from __future__ import annotations
 from datetime import date
+from typing import TYPE_CHECKING
 
-class UserCreate(BaseModel):
+from pydantic import BaseModel, EmailStr
+
+if TYPE_CHECKING:
+    from app.schemas.progress import ProgressRead, PerformanceRead
+
+
+class BaseUser(BaseModel):
     username: str
-    hashed_password: str
     email: EmailStr
-    bio: Optional[str] = None
     birth_date: date
-    profile_picture: Optional[str] = None
-
+    bio: str | None = None
+    profile_picture: str | None = None
+    
     class Config:
-        orm_mode = True
+        from_attributes = True
 
-# UNCOMMENT THE RELATIONSHIPS BELLOW AND CREATE SHOW SCHEMAS I COMMENTED
 
-class UserRead(BaseModel):
+class UserCreate(BaseUser):
+    password: str
+
+
+class UserRead(BaseUser):
     id: int
-    username: str
-    email: EmailStr
-    bio: Optional[str] = None
-    birth_date: date
-    profile_picture: Optional[str] = None
-    # progresses: List[Progress] = []  # Assuming Progress schema exists
-    # performances: List[Performance] = []  # Assuming Performance schema exists
-
-    class Config:
-        orm_mode = True
+    
+    progresses: list[ProgressRead]
+    performances: list[PerformanceRead]
+    

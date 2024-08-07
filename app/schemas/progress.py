@@ -1,33 +1,54 @@
-from pydantic import BaseModel
-from typing import Optional
+from __future__ import annotations
 from datetime import date
+from typing import TYPE_CHECKING
 
-class ProgressCreate(BaseModel):
+from pydantic import BaseModel, Field
+
+if TYPE_CHECKING:
+    from app.schemas.user import UserRead
+
+
+class ProgressBase(BaseModel):
     user_id: int
-    course_id: int
     lesson_id: int
+    course_id: int
     completition_status: int
     start_date: date
-    completition_date: Optional[date] = None
-
+    completition_date: date | None = None
+    
     class Config:
-        orm_mode = True
+        from_attributes = True
+        
+
+class ProgressCreate(ProgressBase):
+    pass
+
+    
+class ProgressRead(ProgressBase):
+    id: int
+    
+    user: UserRead = Field(exclude=True)
+    #course: Optional[CourseRead] = None  # Assuming CourseRead schema exists
+    #lesson: Optional[LessonRead] = None  # Assuming LessonRead schema exists
 
 
-
-# UNCOMMENT BELLOW SCHEMA
-
-# class ProgressRead(BaseModel):
-#     id: int
-#     user_id: int
-#     course_id: int
-#     lesson_id: int
-#     completition_status: int
-#     start_date: date
-#     completition_date: Optional[date] = None
-#     user: Optional[UserRead] = None  # Assuming UserRead schema exists
-#     course: Optional[CourseRead] = None  # Assuming CourseRead schema exists
-#     lesson: Optional[LessonRead] = None  # Assuming LessonRead schema exists
-
-#     class Config:
-#         orm_mode = True
+class PerformanceBase(BaseModel):
+    user_id: int
+    lesson_id: int
+    course_id: int
+    score: int 
+    feedback: str | None
+    
+    class Config:
+        from_attributes = True
+    
+    
+class PerformanceCreate(PerformanceBase):
+    pass
+    
+    
+class PerformanceRead(PerformanceBase):
+    id: int
+    
+    user: UserRead = Field(exclude=True)
+    
